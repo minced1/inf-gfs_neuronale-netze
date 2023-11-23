@@ -1,0 +1,9 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'example.blg'
+[74] biber:340> INFO - === Do Nov 23, 2023, 23:18:42
+[90] Biber.pm:419> INFO - Reading 'example.bcf'
+[163] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[177] bbl.pm:660> INFO - Writing 'example.bbl' with encoding 'UTF-8'
+[177] bbl.pm:763> INFO - Output to example.bbl
+[177] Biber.pm:131> WARN - The file 'example.bcf' does not contain any citations!
+[177] Biber.pm:133> INFO - WARNINGS: 1

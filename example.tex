@@ -1,0 +1,269 @@
+\PassOptionsToClass{handout}{beamer}
+\documentclass[aspectratio=169,usepdftitle=true]{beamer}
+\usefonttheme{professionalfonts}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\usepackage{csquotes}
+\usepackage[ngerman]{babel}
+\usepackage{lipsum}
+\usepackage{listings}
+
+\usetheme{dividing-lines}
+\SetColorProfile{159, 166, 2}{249, 224, 176}{137, 164, 75}
+
+
+\title{Neuronale Netze}
+\subtitle{ChatGPT und Co.}
+\institute{Carl-Friedrich-Gauß-Gymnasium}
+\license{\ccbysa}
+
+\date{\today}
+
+\author{Jasper Gude}
+%\email{j.gude@posteo.de}
+\outro{Hockenheim, \today}
+\license[]{\url{https://creativecommons.org/licenses/by-sa/4.0/}\quad\ccbysa}
+
+% just an example command
+\newcommand\twosplit[3][t]{%
+\begin{columns}[#1]
+\begin{column}{0.475\linewidth}#2\end{column}\hfill
+\begin{column}{0.475\linewidth}#3\end{column}
+\end{columns}}
+
+\def\typesetBox#1#2#3#4{%
+    \pbox{7cm}{{\Large\sbfamily#1}\rlap{\textsuperscript{\color{gray}\cite{#4}}}\\\color{gray}#2\hfill#3}%
+}
+
+\colorlet{semigray}{gray!70!darkgray}
+
+\lstset{
+    backgroundcolor=\color{btdl@color@black},
+    commentstyle=\color{semigray},
+    keywordstyle=\bfseries\color{btdl@color@primary},
+    numberstyle=\tiny\color{semigray},
+    stringstyle=\color{btdl@color@secondary},
+    basicstyle=\ttfamily\color{btdl@color@white},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\usetikzlibrary{arrows.meta,calc,backgrounds,shapes.multipart,intersections}
+\tikzset{
+    bc/.style={circle,draw,fill,#1,text=darkgray,align=center,text width=0.75em},
+    brs/.style={rectangle,rounded corners=2.5pt,draw,fill,#1,text=darkgray,align=center},
+    br/.style={brs=#1,rectangle split,rectangle split parts=2,draw=btdl@color@background,thick,font=\scriptsize\sffamily},
+    br/.default={hl-shade},
+    bcsmall/.style={circle,draw,fill,#1,text=darkgray,align=center,inner sep=2pt},
+    bc/.default={hl-shade},
+    bcsmall/.default={hl-shade},
+    t/.style={ultra thick,#1},
+    tarrow/.style={-Kite,t=#1},
+    dtarrow/.style={Kite-Kite,t=#1},
+    ctarrow/.style={Circle-Kite,t=#1}
+}
+
+\def\cfl#1{\faFile\llap{\color{#1}\tiny\faCogs\;}}
+\def\tagS#1#2{\node[above left=-0.082cm,darkgray,scale=0.65,circle,fill=lgray,inner sep=1pt] at(#1.south east) {\sbfamily#2};}
+\def\tagN#1#2{\node[below left=-0.082cm,darkgray,scale=0.65,circle,fill=hl-shade,inner sep=1pt] at(#1.north east) {\sbfamily#2};}
+
+\colorlet{lgray}{lightgray!45!white}
+\colorlet{hl-shade}{btdl@color@secondary}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\addbibresource{example.bib}
+\begin{document}
+\section{Künstliche Neuronen}
+\begin{frame}{Aufbau eines Perzeptrons}
+    \begin{layout-imageonly}
+    \centering
+    \begin{tikzpicture}[bc/.default={lgray}]
+   \node[] (x0) at (-4,2) {$x_0$};
+    \node[] (x1) at (-4,1) {$x_1$};
+    \node[] (x2) at (-4,0) {$x_2$};
+    \node[] (x...) at (-4,-1) {...};
+    \node[] (xn) at (-4,-2) {$x_n$};
+
+    \node[bc, rectangle] (ueber) at (0,0) {$\sum$};
+    \node[below=.75cm, text width=8em, align=center] at (ueber) {Übertragungsfunktion};
+
+
+    \draw[ctarrow=lgray] (x0) -- (ueber) node[text=darkgray,midway] {$ w_{0 j}$};
+    \draw[ctarrow=lgray] (x1) -- (ueber) node[text=darkgray,midway] {$ w_{1 j}$};
+    \draw[ctarrow=lgray] (x2) -- (ueber) node[text=darkgray,midway] {$ w_{2 j}$};
+    \draw[ctarrow=lgray] (xn) -- (ueber) node[text=darkgray,midway] {$ w_{n j}$};
+
+    \node[bc, rectangle] (aktiv) at (4,0) {$\varphi$};
+    \node[below=.75cm, text width=8em, align=center] at (aktiv) {Aktivierungsfunktion};
+
+    \draw[tarrow=lgray] (ueber) -- (aktiv) node[text=darkgray,midway] (net) {$net_j$};
+    \node[above=.75cm, text width=8em, align=center] at (net) {Netzeingabe};
+
+    \node[] (out) at (6,0) {$o_j$};
+    \node[above=.75cm, text width=8em, align=center] at (out) {Aktivierung};
+    \draw[tarrow=lgray] (aktiv) -- (out);
+
+    \node[] (thresh) at (4,2) {$\theta_j$};
+    \node[above=.75cm, text width=8em, align=center] at (thresh) {Schwellenwert};
+    \draw[ctarrow=lgray] (thresh) -- (aktiv);
+    \end{tikzpicture}
+    \end{layout-imageonly}
+\end{frame}
+
+\section{Topologie der neuronalen Netze}
+\begin{frame}{Einschichtiges feedforward-Netz}
+    \begin{layout-imageonly}
+    \centering
+    \begin{tikzpicture}[bc/.default={lgray}]
+    \node[bc] (x0) at (-4,1) {$x_0$};
+    \node[bc] (x1) at (-4,0) {$x_1$};
+    \node[bc] (x2) at (-4,-1) {$x_2$};
+
+    \node[bc, fill=btdl@color@secondary] (neuro0) at (0,1) {};
+    \node[bc, fill=btdl@color@secondary] (neuro1) at (0,0) {};
+    \node[bc, fill=btdl@color@secondary] (neuro2) at (0,-1) {};
+    \node[below=.75cm, text width=8em, align=center] at (neuro2) {Ausgabeschicht};
+
+    \draw[tarrow=lgray] (x0) -- (neuro0);
+    \draw[tarrow=lgray] (x0) -- (neuro1);
+    \draw[tarrow=lgray] (x0) -- (neuro2);
+
+    \draw[tarrow=lgray] (x1) -- (neuro0);
+    \draw[tarrow=lgray] (x1) -- (neuro1);
+    \draw[tarrow=lgray] (x1) -- (neuro2);
+
+    \draw[tarrow=lgray] (x2) -- (neuro0);
+    \draw[tarrow=lgray] (x2) -- (neuro1);
+    \draw[tarrow=lgray] (x2) -- (neuro2);
+
+    \node[] (o0) at (2,1) {};
+    \node[] (o1) at (2,0) {};
+    \node[] (o2) at (2,-1) {};
+
+    \draw[tarrow=lgray] (neuro0) -- (o0);
+    \draw[tarrow=lgray] (neuro1) -- (o1);
+    \draw[tarrow=lgray] (neuro2) -- (o2);
+
+    \end{tikzpicture}
+    \end{layout-imageonly}
+\end{frame}
+
+\begin{frame}{Mehrschichtiges feedforward-Netz}
+    \begin{layout-imageonly}
+    \centering
+    \begin{tikzpicture}[bc/.default={lgray}]
+    \node[bc] (x0) at (-4,1) {$x_0$};
+    \node[bc] (x1) at (-4,0) {$x_1$};
+    \node[bc] (x2) at (-4,-1) {$x_2$};
+
+    \node[bc, fill=btdl@color@primary] (neuro00) at (0,1) {};
+    \node[bc, fill=btdl@color@primary] (neuro10) at (0,0) {};
+    \node[bc, fill=btdl@color@primary] (neuro20) at (0,-1) {};
+    \node[below=.75cm, text width=10em, align=center] at (neuro20) {verborgene Schicht};
+
+    \draw[tarrow=lgray] (x0) -- (neuro00);
+    \draw[tarrow=lgray] (x0) -- (neuro10);
+    \draw[tarrow=lgray] (x0) -- (neuro20);
+
+    \draw[tarrow=lgray] (x1) -- (neuro00);
+    \draw[tarrow=lgray] (x1) -- (neuro10);
+    \draw[tarrow=lgray] (x1) -- (neuro20);
+
+    \draw[tarrow=lgray] (x2) -- (neuro00);
+    \draw[tarrow=lgray] (x2) -- (neuro10);
+    \draw[tarrow=lgray] (x2) -- (neuro20);
+
+    \node[bc, fill=btdl@color@secondary] (neuro01) at (4,0.5) {};
+    \node[bc, fill=btdl@color@secondary] (neuro11) at (4,-0.5) {};
+
+    \draw[tarrow=lgray] (neuro00) -- (neuro01);
+    \draw[tarrow=lgray] (neuro00) -- (neuro11);
+
+    \draw[tarrow=lgray] (neuro10) -- (neuro01);
+    \draw[tarrow=lgray] (neuro10) -- (neuro11);
+
+    \draw[tarrow=lgray] (neuro20) -- (neuro01);
+    \draw[tarrow=lgray] (neuro20) -- (neuro11);
+
+    \node[] (o0) at (6,0.5) {};
+    \node[] (o1) at (6,-0.5) {};
+    \node[below=.75cm, text width=8em, align=center] at (neuro11) {Ausgabeschicht};
+
+
+    \draw[tarrow=lgray] (neuro01) -- (o0);
+    \draw[tarrow=lgray] (neuro11) -- (o1);
+
+    \end{tikzpicture}
+    \end{layout-imageonly}
+\end{frame}
+
+\begin{frame}{Rekurrentes Netz}
+    \begin{layout-imageonly}
+    \centering
+    \begin{tikzpicture}[bc/.default={lgray}]
+    \node[bc] (x0) at (-4,1.5) {$x_0$};
+    \node[bc] (x1) at (-4,0.5) {$x_1$};
+    \node[bc] (x2) at (-4,-0.5) {$x_2$};
+    \node[bc] (x3) at (-4,-1.5) {$x_3$};
+
+    \node[bc, fill=btdl@color@secondary] (neuro00) at (0,1.5) {};
+    \node[bc, fill=btdl@color@secondary] (neuro10) at (0,0) {};
+    \node[bc, fill=btdl@color@secondary] (neuro20) at (0,-1.5) {};
+    \node[below=.75cm, text width=8em, align=center] at (neuro20) {Ausgabeschicht};
+
+    \draw[tarrow=lgray] (x0) -- (neuro00);
+    \draw[tarrow=lgray] (x0) -- (neuro10);
+    \draw[tarrow=lgray] (x0) -- (neuro20);
+
+    \draw[tarrow=lgray] (x1) -- (neuro00);
+    \draw[tarrow=lgray] (x1) -- (neuro10);
+    \draw[tarrow=lgray] (x1) -- (neuro20);
+
+    \draw[tarrow=lgray] (x2) -- (neuro00);
+    \draw[tarrow=lgray] (x2) -- (neuro10);
+    \draw[tarrow=lgray] (x2) -- (neuro20);
+
+    \draw[tarrow=lgray] (x2) -- (neuro00);
+    \draw[tarrow=lgray] (x2) -- (neuro10);
+    \draw[tarrow=lgray] (x2) -- (neuro20);
+
+    \draw[tarrow=lgray] (x3) -- (neuro00);
+    \draw[tarrow=lgray] (x3) -- (neuro10);
+    \draw[tarrow=lgray] (x3) -- (neuro20);
+
+    \node[] (o0) at (2,1.5) {};
+    \node[] (o1) at (2,0) {};
+    \node[] (o2) at (2,-1.5) {};
+
+    \draw[tarrow=lgray] (neuro00) -- (o0);
+    \draw[tarrow=lgray] (neuro00.east) .. controls +(right:1) and +(up:1) .. (neuro00.north);
+
+    \draw[tarrow=lgray] (neuro10) -- (o1);
+    \draw[tarrow=lgray] (neuro10.east) .. controls +(right:1) and +(up:1) .. (neuro10.north);
+
+    \draw[tarrow=lgray] (neuro20) -- (o2);
+    \draw[tarrow=lgray] (neuro20.east) .. controls +(right:1) and +(up:1) .. (neuro20.north);
+
+
+
+
+    \end{tikzpicture}
+    \end{layout-imageonly}
+\end{frame}
+
+
+\section{Lernen der neuronalen Netze}
+
+\end{document}
