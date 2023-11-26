@@ -1,0 +1,207 @@
+\def\mnistAnimated#1{
+\resizebox{\linewidth}{!}{
+\begin{tikzpicture}
+\node[inner sep=0pt] (pic) at (28px,28px) {\includegraphics[width = 56px]{#1}};
+\draw[lightgray,thin] (0,0) rectangle (56px,56px);
+\onslide<2->{\draw[step=2px,lightgray,ultra thin] (0,0) grid (56px,56px);}
+\end{tikzpicture}}
+}
+
+\def\mnist#1{
+\resizebox{\linewidth}{!}{
+\begin{tikzpicture}
+\node[inner sep=0pt] (pic) at (28px,28px) {\includegraphics[width = 56px]{#1}};
+\draw[lightgray,thin] (0,0) rectangle (56px,56px);
+\draw[step=2px,lightgray,ultra thin] (0,0) grid (56px,56px);
+\end{tikzpicture}}
+}
+
+\def\perceptron{
+\begin{tikzpicture}[bc/.default={lgray}]
+    \node[] (x0) at (-4,2) {$x_0$};
+    \node[] (x1) at (-4,1) {$x_1$};
+    \node[] (x2) at (-4,0) {$x_2$};
+    \node[] (x...) at (-4,-1) {...};
+    \node[] (xn) at (-4,-2) {$x_n$};
+    \node[above=.75cm, text width=8em, align=center] at (x0) {Inputvektor $\vec{x}$};
+
+    \node[bc, rectangle, minimum size=1cm] (ueber) at (0,0) {$\sum$};
+    \node[below=.75cm, text width=8em, align=center] at (ueber) {Übertragungsfunktion};
+
+
+    \draw[ctarrow=lgray] (x0) -- (ueber) node[text=darkgray,midway] {$ w_{0 }$};
+    \draw[ctarrow=lgray] (x1) -- (ueber) node[text=darkgray,midway] {$ w_{1 }$};
+    \draw[ctarrow=lgray] (x2) -- (ueber) node[text=darkgray,midway] {$ w_{2 }$};
+    \draw[ctarrow=lgray] (xn) -- (ueber) node[text=darkgray,midway] {$ w_{n }$};
+
+    \node[bc, rectangle, minimum size=1cm] (aktiv) at (4,0) {$\varphi$};
+    \node[below=.75cm, text width=8em, align=center] at (aktiv) {Aktivierungsfunktion};
+
+    \draw[tarrow=lgray] (ueber) -- (aktiv) node[text=darkgray,midway] (net) {$net$};
+    \node[above=.75cm, text width=8em, align=center] at (net) {Netzeingabe};
+
+    \node[] (out) at (6,0) {$o$};
+    \node[above=.75cm, text width=8em, align=center] at (out) {Output};
+    \draw[tarrow=lgray] (aktiv) -- (out);
+\end{tikzpicture}}
+
+\def\perceptronFirstHalf{
+\begin{tikzpicture}[bc/.default={lgray}]
+    \node[] (x0) at (-4,2) {$x_0$};
+    \node[] (x1) at (-4,1) {$x_1$};
+    \node[] (x2) at (-4,0) {$x_2$};
+    \node[] (x...) at (-4,-1) {...};
+    \node[] (xn) at (-4,-2) {$x_n$};
+    \node[above=.75cm, text width=8em, align=center] at (x0) {Inputvektor $\vec{x}$};
+
+    \node[bc, rectangle, minimum size=1cm] (ueber) at (0,0) {$\sum$};
+    \node[below=.75cm, text width=8em, align=center] at (ueber) {Übertragungsfunktion};
+
+
+    \draw[ctarrow=lgray] (x0) -- (ueber) node[text=darkgray,midway] {$ w_{0 }$};
+    \draw[ctarrow=lgray] (x1) -- (ueber) node[text=darkgray,midway] {$ w_{1 }$};
+    \draw[ctarrow=lgray] (x2) -- (ueber) node[text=darkgray,midway] {$ w_{2 }$};
+    \draw[ctarrow=lgray] (xn) -- (ueber) node[text=darkgray,midway] {$ w_{n }$};
+
+
+    \draw[tarrow=lgray] (ueber) -- (2,0) node[text=darkgray,midway] (net) {$net$};
+    \node[above=.75cm, text width=8em, align=center] at (net) {Netzeingabe};
+\end{tikzpicture}}
+
+\def\perceptronSecondHalf{
+\begin{tikzpicture}[bc/.default={lgray}]
+    \node[bc, rectangle, minimum size=1cm] (aktiv) at (4,0) {$\varphi$};
+    \node[below=.75cm, text width=8em, align=center] at (aktiv) {Aktivierungsfunktion};
+
+    \draw[tarrow=lgray] (2,0) -- (aktiv) node[text=darkgray,midway] (net) {$net$};
+    \node[above=.75cm, text width=8em, align=center] at (net) {Netzeingabe};
+
+    \node[] (out) at (6,0) {$o$};
+    \node[above=.75cm, text width=8em, align=center] at (out) {Output};
+    \draw[tarrow=lgray] (aktiv) -- (out);
+\end{tikzpicture}}
+
+\def\feedforwardNetwork{
+\begin{tikzpicture}[bc/.default={lgray}]
+    \node[bc] (x0) at (-4,1) {$x_0$};
+    \node[bc] (x1) at (-4,0) {$x_1$};
+    \node[bc] (x2) at (-4,-1) {$x_2$};
+
+    \node[bc, fill=btdl@color@secondary] (neuro0) at (0,1) {};
+    \node[bc, fill=btdl@color@secondary] (neuro1) at (0,0) {};
+    \node[bc, fill=btdl@color@secondary] (neuro2) at (0,-1) {};
+    \node[below=.75cm, text width=8em, align=center] at (neuro2) {Ausgabeschicht};
+
+    \draw[tarrow=lgray] (x0) -- (neuro0);
+    \draw[tarrow=lgray] (x0) -- (neuro1);
+    \draw[tarrow=lgray] (x0) -- (neuro2);
+
+    \draw[tarrow=lgray] (x1) -- (neuro0);
+    \draw[tarrow=lgray] (x1) -- (neuro1);
+    \draw[tarrow=lgray] (x1) -- (neuro2);
+
+    \draw[tarrow=lgray] (x2) -- (neuro0);
+    \draw[tarrow=lgray] (x2) -- (neuro1);
+    \draw[tarrow=lgray] (x2) -- (neuro2);
+
+    \node[] (o0) at (2,1) {};
+    \node[] (o1) at (2,0) {};
+    \node[] (o2) at (2,-1) {};
+
+    \draw[tarrow=lgray] (neuro0) -- (o0);
+    \draw[tarrow=lgray] (neuro1) -- (o1);
+    \draw[tarrow=lgray] (neuro2) -- (o2);
+
+\end{tikzpicture}}
+
+\def\deepfeedforwardNetwork{
+\begin{tikzpicture}[bc/.default={lgray}]
+    \node[bc] (x0) at (-4,1) {$x_0$};
+    \node[bc] (x1) at (-4,0) {$x_1$};
+    \node[bc] (x2) at (-4,-1) {$x_2$};
+
+    \node[bc, fill=btdl@color@primary] (neuro00) at (0,1) {};
+    \node[bc, fill=btdl@color@primary] (neuro10) at (0,0) {};
+    \node[bc, fill=btdl@color@primary] (neuro20) at (0,-1) {};
+    \node[below=.75cm, text width=10em, align=center] at (neuro20) {verborgene Schicht};
+
+    \draw[tarrow=lgray] (x0) -- (neuro00);
+    \draw[tarrow=lgray] (x0) -- (neuro10);
+    \draw[tarrow=lgray] (x0) -- (neuro20);
+
+    \draw[tarrow=lgray] (x1) -- (neuro00);
+    \draw[tarrow=lgray] (x1) -- (neuro10);
+    \draw[tarrow=lgray] (x1) -- (neuro20);
+
+    \draw[tarrow=lgray] (x2) -- (neuro00);
+    \draw[tarrow=lgray] (x2) -- (neuro10);
+    \draw[tarrow=lgray] (x2) -- (neuro20);
+
+    \node[bc, fill=btdl@color@secondary] (neuro01) at (4,0.5) {};
+    \node[bc, fill=btdl@color@secondary] (neuro11) at (4,-0.5) {};
+
+    \draw[tarrow=lgray] (neuro00) -- (neuro01);
+    \draw[tarrow=lgray] (neuro00) -- (neuro11);
+
+    \draw[tarrow=lgray] (neuro10) -- (neuro01);
+    \draw[tarrow=lgray] (neuro10) -- (neuro11);
+
+    \draw[tarrow=lgray] (neuro20) -- (neuro01);
+    \draw[tarrow=lgray] (neuro20) -- (neuro11);
+
+    \node[] (o0) at (6,0.5) {};
+    \node[] (o1) at (6,-0.5) {};
+    \node[below=.75cm, text width=8em, align=center] at (neuro11) {Ausgabeschicht};
+
+
+    \draw[tarrow=lgray] (neuro01) -- (o0);
+    \draw[tarrow=lgray] (neuro11) -- (o1);
+
+\end{tikzpicture}}
+
+\def\recursiveNetwork{
+\begin{tikzpicture}[bc/.default={lgray}]
+    \node[bc] (x0) at (-4,1.5) {$x_0$};
+    \node[bc] (x1) at (-4,0.5) {$x_1$};
+    \node[bc] (x2) at (-4,-0.5) {$x_2$};
+    \node[bc] (x3) at (-4,-1.5) {$x_3$};
+
+    \node[bc, fill=btdl@color@secondary] (neuro00) at (0,1.5) {};
+    \node[bc, fill=btdl@color@secondary] (neuro10) at (0,0) {};
+    \node[bc, fill=btdl@color@secondary] (neuro20) at (0,-1.5) {};
+    \node[below=.75cm, text width=8em, align=center] at (neuro20) {Ausgabeschicht};
+
+    \draw[tarrow=lgray] (x0) -- (neuro00);
+    \draw[tarrow=lgray] (x0) -- (neuro10);
+    \draw[tarrow=lgray] (x0) -- (neuro20);
+
+    \draw[tarrow=lgray] (x1) -- (neuro00);
+    \draw[tarrow=lgray] (x1) -- (neuro10);
+    \draw[tarrow=lgray] (x1) -- (neuro20);
+
+    \draw[tarrow=lgray] (x2) -- (neuro00);
+    \draw[tarrow=lgray] (x2) -- (neuro10);
+    \draw[tarrow=lgray] (x2) -- (neuro20);
+
+    \draw[tarrow=lgray] (x2) -- (neuro00);
+    \draw[tarrow=lgray] (x2) -- (neuro10);
+    \draw[tarrow=lgray] (x2) -- (neuro20);
+
+    \draw[tarrow=lgray] (x3) -- (neuro00);
+    \draw[tarrow=lgray] (x3) -- (neuro10);
+    \draw[tarrow=lgray] (x3) -- (neuro20);
+
+    \node[] (o0) at (2,1.5) {};
+    \node[] (o1) at (2,0) {};
+    \node[] (o2) at (2,-1.5) {};
+
+    \draw[tarrow=lgray] (neuro00) -- (o0);
+    \draw[tarrow=lgray] (neuro00.east) .. controls +(right:1) and +(up:1) .. (neuro00.north);
+
+    \draw[tarrow=lgray] (neuro10) -- (o1);
+    \draw[tarrow=lgray] (neuro10.east) .. controls +(right:1) and +(up:1) .. (neuro10.north);
+
+    \draw[tarrow=lgray] (neuro20) -- (o2);
+    \draw[tarrow=lgray] (neuro20.east) .. controls +(right:1) and +(up:1) .. (neuro20.north);
+
+\end{tikzpicture}}
