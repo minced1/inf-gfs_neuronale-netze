@@ -166,7 +166,7 @@ Inputs
 Gewichte
 }
 \begin{block}{Linearkombination}
-    \(x_0w_{0} + x_1w_{1} + x_2w_{2} + ... + x_nw_{n} \onslide<4->{-b}\)
+    \[w_{0}x_{0} + w_{1}x_{1} + \cdots + w_{n}x_{n}\onslide<4->{-b}\]
 \end{block}
 \end{column}
 \begin{column}{0.5\linewidth}
@@ -185,7 +185,7 @@ Gewichte
 \begin{columns}[c]
 \begin{column}{0.5\linewidth}
 \begin{block}{Sigmoidfunktion}
-\[\varphi(x)=\frac{1}{1+e^{-x}}\]
+\[\sigma(x)=\frac{1}{1+e^{-x}}\]
 \centering
 \resizebox{0.5\linewidth}{!}{
 \begin{tikzpicture}
@@ -211,6 +211,57 @@ Gewichte
 \centering
 \resizebox{!}{0.8\textheight}{
 \neuralnetworkSingleNeuron
+}
+\end{column}
+\end{columns}
+\end{layout-imageonly}
+\end{frame}
+
+\begin{frame}{Alles zusammen setzen}
+\begin{layout-imageonly}
+\begin{columns}[c]
+\begin{column}{0.7\linewidth}
+\begin{block}{Aktivierungsfunktion}
+\only<1-2>{\[x_{0}^{(1)}=\sigma(w_{0}^{(0)}x_{0} + w_{1}^{(0)}x_{1} + \cdots + w_{n}^{(0)}x_{n} -b)\]}
+\only<3>{\[\vec{x^{(1)}}=\sigma(W\vec{x^{(0)}}+\vec{b})\]}
+\onslide<2->{
+\[
+\begin{bmatrix}
+    x_{0}^{(1)}\\
+    x_{1}^{(1)}\\
+    \vdots \\
+    x_{n}^{(1)}
+\end{bmatrix}=
+\sigma
+    \begin{pmatrix}
+        \begin{bmatrix}
+        w_{0,0} & w_{0,1} & \cdots & w_{0,n}\\
+        w_{1,0} & w_{1,1} & \cdots & w_{1,n}\\
+        \vdots & \vdots & \ddots & \vdots \\
+        w_{k,0} & w_{k,1} & \cdots & w_{k,n}
+        \end{bmatrix}
+        \begin{bmatrix}
+        x_{0}^{(0)}\\
+        x_{1}^{(0)}\\
+        \vdots \\
+        x_{n}^{(0)}
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+        b_{0}\\
+        b_{1}\\
+        \vdots \\
+        b_{k}
+        \end{bmatrix}
+    \end{pmatrix}
+\]
+}
+\end{block}
+\end{column}
+\begin{column}{0.3\linewidth}
+\centering
+\resizebox{!}{0.8\textheight}{
+\neuralnetworkMatrix
 }
 \end{column}
 \end{columns}
