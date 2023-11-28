@@ -222,15 +222,15 @@ Gewichte
 \begin{columns}[c]
 \begin{column}{0.7\linewidth}
 \begin{block}{Aktivierungsfunktion}
-\only<1-2>{\[x_{0}^{(1)}=\sigma(w_{0}^{(0)}x_{0} + w_{1}^{(0)}x_{1} + \cdots + w_{n}^{(0)}x_{n} -b)\]}
-\only<3>{\[\vec{x^{(1)}}=\sigma(W\vec{x^{(0)}}+\vec{b})\]}
+\only<1-2>{\[a_{0}^{(1)}=\sigma(w_{0}^{(0)}a_{0} + w_{1}^{(0)}a_{1} + \cdots + w_{n}^{(0)}a_{n} -b)\]}
+\only<3>{\[\vec{a^{(1)}}=\sigma(W\vec{a^{(0)}}+\vec{b})\]}
 \onslide<2->{
 \[
 \begin{bmatrix}
-    x_{0}^{(1)}\\
-    x_{1}^{(1)}\\
+    a_{0}^{(1)}\\
+    a_{1}^{(1)}\\
     \vdots \\
-    x_{n}^{(1)}
+    a_{n}^{(1)}
 \end{bmatrix}=
 \sigma
     \begin{pmatrix}
@@ -241,10 +241,10 @@ Gewichte
         w_{k,0} & w_{k,1} & \cdots & w_{k,n}
         \end{bmatrix}
         \begin{bmatrix}
-        x_{0}^{(0)}\\
-        x_{1}^{(0)}\\
+        a_{0}^{(0)}\\
+        a_{1}^{(0)}\\
         \vdots \\
-        x_{n}^{(0)}
+        a_{n}^{(0)}
         \end{bmatrix}
         +
         \begin{bmatrix}
@@ -267,114 +267,150 @@ Gewichte
 \end{columns}
 \end{layout-imageonly}
 \end{frame}
-
-\begin{frame}{Aufbau eines Perzeptrons}
-    \begin{layout-imageonly}
-    \centering
-    \perceptron
-    \end{layout-imageonly}
-\end{frame}
-
-\begin{frame}{Übertragungsfunktion}
-\begin{layout-full}
-\twosplit{
-\begin{block}{Linearkombination}
-    \[net = x_0w_{0} + x_1w_{1} + x_2w_{2} + ... + x_nw_{n}\]
-    \centering oder
-    \[net = \sum_{i=0}^{n} {x_iw_{i}} \]
-\end{block}
-}{
-\centering
-\resizebox{\linewidth}{!}{
-\perceptronFirstHalf
-}
-}
-\end{layout-full}
-\end{frame}
-
-
-
-
-\begin{frame}{Fehlerfunktion}
-\begin{layout-full}
-\begin{block}{Dataset}
-\[
-  X = \Bigl\{(\vec{x_0}, y_0);(\vec{x_1}, y_1);(\vec{x_2}, y_2);(\dots, \dots);(\vec{x_n}, y_n)\Bigl\}
-\]
-\end{block}
-\twosplit{
-\begin{block}{Mean Squared Error}
-\[E=\frac{1}{2}\sum_{i=0}^{n}(y_i-o_i)^2\]
-\end{block}
-}{
-\centering
-\resizebox{\linewidth}{!}{
-\perceptron
-}
-}
-\end{layout-full}
-\end{frame}
-
 \section{Training}
-\begin{frame}{Dataset}
-
-\[
-  X = \Bigl\{(\vec{x_0}, y_0);(\vec{x_1}, y_1);(\vec{x_2}, y_2);(\dots, \dots);(\vec{x_n}, y_n)\Bigl\}
-\]
-\end{frame}
-
-\begin{frame}{Ableitung der Aktivierungsfunktion}
-\begin{layout-full}
-\begin{block}{Ableitung der Sigmoidfunktion}
-\twosplit{
-\[\varphi'(x)=\frac{1}{1+e^{-x}}\cdot(1+\frac{1}{1+e^{-x}})\]
-\centering oder
-\[\varphi'(x)=\varphi(x)\cdot(1+\varphi(x))\]
-}{
-\begin{tikzpicture}
-\begin{axis}[
-  axis lines=center,
-  xtick={-1,1},
-  ytick={0,0.25},
-  xlabel={$x$},
-  ylabel={$y$},
-  xlabel style={below right},
-  ylabel style={above left},
-  xmin=-5.5,
-  xmax=5.5,
-  ymin=-0.25,
-  ymax=0.5]
-\addplot[color=btdl@color@alerted, style = {thick}]{
-1/(1+exp(-x))*(1-1/(1+exp(-x)))};
-\end{axis}
-\end{tikzpicture}
+\begin{frame}{Fehler bestimmen}
+\begin{layout-imageonly}
+\begin{columns}[c]
+\begin{column}{0.3\linewidth}
+\centering
+\only<1-2>{
+\mnist{Mnist3-a.png}
+28px $\times$ 28px
 }
-\end{block}
-\end{layout-full}
+\only<3>{
+\resizebox{\linewidth}{!}{
+\includegraphics[]{MnistExamples}}
+Dataset $D$
+}
+
+\end{column}\hfill
+\begin{column}{0.7\linewidth}
+\centering
+\only<1>{
+\resizebox{!}{0.5\textheight}{
+\neuralnetwork
+}
+}
+\only<2>{
+\resizebox{!}{0.8\textheight}{
+\neuralnetworkCost
+}
+}
+\only<3>{
+\[\frac{1}{n_{D}}\sum_{x \in D} C(x)\]
+}
+\end{column}
+\end{columns}
+\end{layout-imageonly}
 \end{frame}
 
-
-\section{Topologie}
-\begin{frame}{Einschichtiges feedforward-Netz}
-    \begin{layout-imageonly}
-    \centering
-    \feedforwardNetwork
-    \end{layout-imageonly}
-\end{frame}
-
-\begin{frame}{Mehrschichtiges feedforward-Netz}
-    \begin{layout-imageonly}
-    \centering
-    \deepfeedforwardNetwork
-    \end{layout-imageonly}
-\end{frame}
-
-\begin{frame}{Rekurrentes Netz}
-    \begin{layout-imageonly}
-    \centering
-    \recursiveNetwork
-    \end{layout-imageonly}
-\end{frame}
+% \begin{frame}{Aufbau eines Perzeptrons}
+%     \begin{layout-imageonly}
+%     \centering
+%     \perceptron
+%     \end{layout-imageonly}
+% \end{frame}
+%
+% \begin{frame}{Übertragungsfunktion}
+% \begin{layout-full}
+% \twosplit{
+% \begin{block}{Linearkombination}
+%     \[net = x_0w_{0} + x_1w_{1} + x_2w_{2} + ... + x_nw_{n}\]
+%     \centering oder
+%     \[net = \sum_{i=0}^{n} {x_iw_{i}} \]
+% \end{block}
+% }{
+% \centering
+% \resizebox{\linewidth}{!}{
+% \perceptronFirstHalf
+% }
+% }
+% \end{layout-full}
+% \end{frame}
+%
+%
+%
+%
+% \begin{frame}{Fehlerfunktion}
+% \begin{layout-full}
+% \begin{block}{Dataset}
+% \[
+%   X = \Bigl\{(\vec{x_0}, y_0);(\vec{x_1}, y_1);(\vec{x_2}, y_2);(\dots, \dots);(\vec{x_n}, y_n)\Bigl\}
+% \]
+% \end{block}
+% \twosplit{
+% \begin{block}{Mean Squared Error}
+% \[E=\frac{1}{2}\sum_{i=0}^{n}(y_i-o_i)^2\]
+% \end{block}
+% }{
+% \centering
+% \resizebox{\linewidth}{!}{
+% \perceptron
+% }
+% }
+% \end{layout-full}
+% \end{frame}
+%
+% \section{Training}
+% \begin{frame}{Dataset}
+%
+% \[
+%   X = \Bigl\{(\vec{x_0}, y_0);(\vec{x_1}, y_1);(\vec{x_2}, y_2);(\dots, \dots);(\vec{x_n}, y_n)\Bigl\}
+% \]
+% \end{frame}
+%
+% \begin{frame}{Ableitung der Aktivierungsfunktion}
+% \begin{layout-full}
+% \begin{block}{Ableitung der Sigmoidfunktion}
+% \twosplit{
+% \[\varphi'(x)=\frac{1}{1+e^{-x}}\cdot(1+\frac{1}{1+e^{-x}})\]
+% \centering oder
+% \[\varphi'(x)=\varphi(x)\cdot(1+\varphi(x))\]
+% }{
+% \begin{tikzpicture}
+% \begin{axis}[
+%   axis lines=center,
+%   xtick={-1,1},
+%   ytick={0,0.25},
+%   xlabel={$x$},
+%   ylabel={$y$},
+%   xlabel style={below right},
+%   ylabel style={above left},
+%   xmin=-5.5,
+%   xmax=5.5,
+%   ymin=-0.25,
+%   ymax=0.5]
+% \addplot[color=btdl@color@alerted, style = {thick}]{
+% 1/(1+exp(-x))*(1-1/(1+exp(-x)))};
+% \end{axis}
+% \end{tikzpicture}
+% }
+% \end{block}
+% \end{layout-full}
+% \end{frame}
+%
+%
+% \section{Topologie}
+% \begin{frame}{Einschichtiges feedforward-Netz}
+%     \begin{layout-imageonly}
+%     \centering
+%     \feedforwardNetwork
+%     \end{layout-imageonly}
+% \end{frame}
+%
+% \begin{frame}{Mehrschichtiges feedforward-Netz}
+%     \begin{layout-imageonly}
+%     \centering
+%     \deepfeedforwardNetwork
+%     \end{layout-imageonly}
+% \end{frame}
+%
+% \begin{frame}{Rekurrentes Netz}
+%     \begin{layout-imageonly}
+%     \centering
+%     \recursiveNetwork
+%     \end{layout-imageonly}
+% \end{frame}
 
 
 \end{document}

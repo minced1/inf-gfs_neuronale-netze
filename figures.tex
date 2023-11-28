@@ -56,16 +56,89 @@
 \end{tikzpicture}
 }
 
+\def\neuralnetwork{
+\begin{tikzpicture}[bc/.default={lgray}]
+
+\foreach \i in {0,...,2}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black,] (y\i) at (13,-0.5*\i-1.75) {};
+}
+\node[bc, text width = 0.1, fill = black, draw=btdl@color@black,] (y3) at (13,-0.5*3-1.75) {};
+\foreach \i in {4,...,9}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black,] (y\i) at (13,-0.5*\i-1.75) {};
+}
+\foreach \i in {0,...,9}{
+    \pgfmathparse{rnd}
+    \definecolor{rndgray}{gray}{\pgfmathresult}
+    \node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:\i}] (o\i) at (12,-0.5*\i-1.75) {};
+}
+\foreach \i in {0,...,15}{
+    \pgfmathparse{rnd}
+    \definecolor{rndgray}{gray}{\pgfmathresult}
+    \node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h\i) at (8,-0.5*\i-0.25) {};
+    \foreach \j in {0,...,9}
+        \draw[ultra thin] (h\i) -- (o\j);
+}
+\foreach \i in {0,...,15}{
+    \pgfmathparse{rnd}
+    \definecolor{rndgray}{gray}{\pgfmathresult}
+    \node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (i\i) at (4,-0.5*\i-0.25) {};
+    \foreach \j in {0,...,15}
+        \draw[ultra thin] (i\i) -- (h\j);
+}
+\foreach \i in {0,...,7}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black] (x\i) at (0,-0.5*\i) {};
+        \foreach \j in {0,...,15}
+        \draw[ultra thin] (x\i) -- (i\j);
+}
+\node[ fill = none, draw=none] (x8) at (0,-0.5*8) {$\vdots$};
+\foreach \i in {9,...,16}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black] (x\i) at (0,-0.5*\i) {};
+    \foreach \j in {0,...,15}
+        \draw[ultra thin] (x\i) -- (i\j);
+}
+\draw[decoration={brace,raise=20pt},decorate] (x16) -- node[left=20pt] {784} (x0);
+\end{tikzpicture}
+}
+
+\def\neuralnetworkCost{
+\pgfkeys{/pgf/number format/.cd,
+    fixed,
+    fixed zerofill,
+    precision=2,
+    set thousands separator={}}
+
+\begin{tikzpicture}[bc/.default={lgray}]
+
+\foreach \i in {0,...,2}{
+    \node[circle, fill = none, draw=btdl@color@black, label = {right:$\biggl)^2$}] (y\i) at (6,-1.5*\i) {$\pgfmathprintnumber{0.00}$};
+}
+\node[circle,  fill = none, draw=btdl@color@black, label = {right:$\biggl)^2$}] (y3) at (6,-1.5*3) {$\pgfmathprintnumber{1.00}$};
+\foreach \i in {4,...,9}{
+    \node[circle, fill = none, draw=btdl@color@black, label = {right:$\biggl)^2$}] (y\i) at (6,-1.5*\i) {$\pgfmathprintnumber{0.00}$};
+}
+\foreach \i in {0,...,9}{
+    \node[circle, fill = none, draw=btdl@color@black, label = {left:$\biggl($}, label = {right:\i}] (o\i) at (0,-1.5*\i) {\pgfmathparse{rnd}$\pgfmathprintnumber{\pgfmathresult}$};
+    \node (n\i) at (3,-1.5*\i) {$-$};
+}
+\draw[decoration={brace,raise=60pt},decorate] (o9) -- node[left=80pt] {
+\Huge $C\begin{pmatrix}
+        \includegraphics[width = 56px]{Mnist3-a.png}
+        \end{pmatrix}
+        =$ Summe
+} (o0);
+\end{tikzpicture}
+}
+
 \def\neuralnetworkSingleNeuron{
 \begin{tikzpicture}[bc/.default={lgray}]
     \node[bc, text width = 0.1, fill = none, draw=btdl@color@black] (i0) at (4,-0.5*8) {};
 
 \foreach \i in {0,...,7}{
-    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black, label = {right:$x_\i$}] (x\i) at (0,-0.5*\i) {};
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black, label = {right:$a_\i$}] (x\i) at (0,-0.5*\i) {};
     \draw[ultra thin] (x\i) -- (i0);
     \node (w\i) at (2,-0.5*\i) {$w_\i$};
 }
-\node[fill = none, draw=none, label = {right:$x_n$}] (x8) at (0,-0.5*8) {$\vdots$};
+\node[fill = none, draw=none, label = {right:$a_n$}] (x8) at (0,-0.5*8) {$\vdots$};
 \node (wn) at (2,-0.5*8) {$w_n$};
 \foreach \i in {9,...,16}{
     \node[bc, text width = 0.1, fill = none, draw=btdl@color@black] (x\i) at (0,-0.5*\i) {};
@@ -78,18 +151,18 @@
 \def\neuralnetworkMatrix{
 \begin{tikzpicture}[bc/.default={lgray}]
 
-\node[circle, fill = none, draw=btdl@color@black] (i0) at (6,-1.5*0-1.5) {$x_{0}^{(1)}$};
+\node[circle, fill = none, draw=btdl@color@black] (i0) at (6,-1.5*0-1.5) {$a_{0}^{(1)}$};
 
 \foreach \i in {0,...,7}{
-    \node[circle, fill = none, draw=btdl@color@black] (x\i) at (0,-1.5*\i) {$x_{\i}^{(0)}$};
+    \node[circle, fill = none, draw=btdl@color@black] (x\i) at (0,-1.5*\i) {$a_{\i}^{(0)}$};
         \draw[ultra thin] (x\i) -- (i0);
 }
 \onslide<2->{
 \foreach \i in {1,...,5}{
-    \node[circle, fill = none, draw=btdl@color@black] (i\i) at (6,-1.5*\i-1.5) {$x_{\i}^{(1)}$};
+    \node[circle, fill = none, draw=btdl@color@black] (i\i) at (6,-1.5*\i-1.5) {$a_{\i}^{(1)}$};
 }
 \foreach \i in {0,...,7}{
-    \node[circle, fill = none, draw=btdl@color@black] (x\i) at (0,-1.5*\i) {$x_{\i}^{(0)}$};
+    \node[circle, fill = none, draw=btdl@color@black] (x\i) at (0,-1.5*\i) {$a_{\i}^{(0)}$};
         \foreach \j in {1,...,5}
         \draw[ultra thin] (x\i) -- (i\j);
 }

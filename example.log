@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/nixos.org)  (format=lualatex 1980.1.1)  28 NOV 2023 00:53
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/nixos.org)  (format=lualatex 1980.1.1)  28 NOV 2023 20:23
  restricted system commands enabled.
 **example.tex
 (./example.tex
@@ -2460,17 +2460,17 @@ exmfdist/tex/latex/microtype/mt-TU-empty.cfg
 File: mt-TU-empty.cfg 2021/06/22 v1.1 microtype config. file: fonts with nonsta
 ndard glyph set (RS)
 )
-<Mnist3-a.png, id=48, 28.105pt x 28.105pt>
+<Mnist3-a.png, id=38, 28.105pt x 28.105pt>
 File: Mnist3-a.png Graphic file (type png)
 <use Mnist3-a.png>
 Package luatex.def Info: Mnist3-a.png  used on input line 122.
 (luatex.def)             Requested size: 56.20935pt x 56.21584pt.
-<Mnist3-b.png, id=49, 28.105pt x 28.105pt>
+<Mnist3-b.png, id=39, 28.105pt x 28.105pt>
 File: Mnist3-b.png Graphic file (type png)
 <use Mnist3-b.png>
 Package luatex.def Info: Mnist3-b.png  used on input line 122.
 (luatex.def)             Requested size: 56.20935pt x 56.21584pt.
-<Mnist3-c.png, id=50, 28.105pt x 28.105pt>
+<Mnist3-c.png, id=40, 28.105pt x 28.105pt>
 File: Mnist3-c.png Graphic file (type png)
 <use Mnist3-c.png>
 Package luatex.def Info: Mnist3-c.png  used on input line 122.
@@ -2647,7 +2647,7 @@ Overfull \hbox (31.55994pt too wide) has occurred while \output is active
 [14
 
 ]
-Overfull \hbox (5.40916pt too wide) in paragraph at lines 269--269
+Overfull \hbox (5.35512pt too wide) in paragraph at lines 269--269
  [][] 
  []
 
@@ -2659,7 +2659,7 @@ Overfull \hbox (31.55994pt too wide) has occurred while \output is active
 [15
 
 ]
-Overfull \hbox (5.40916pt too wide) in paragraph at lines 269--269
+Overfull \hbox (5.35512pt too wide) in paragraph at lines 269--269
  [][] 
  []
 
@@ -2671,7 +2671,7 @@ Overfull \hbox (31.55994pt too wide) has occurred while \output is active
 [16
 
 ]
-Overfull \hbox (5.40916pt too wide) in paragraph at lines 269--269
+Overfull \hbox (5.35512pt too wide) in paragraph at lines 269--269
  [][] 
  []
 
@@ -2683,130 +2683,32 @@ Overfull \hbox (31.55994pt too wide) has occurred while \output is active
 [17
 
 ]
-Overfull \hbox (3.35071pt too wide) in paragraph at lines 276--276
- [][][]$[]$[] 
- []
-
-
-Overfull \hbox (4.813pt too wide) in paragraph at lines 276--276
- [][] 
- []
-
-
-Overfull \hbox (31.55994pt too wide) has occurred while \output is active
-[]
- []
-
-[18
+File: Mnist3-a.png Graphic file (type png)
+<use Mnist3-a.png>
+Package luatex.def Info: Mnist3-a.png  used on input line 294.
+(luatex.def)             Requested size: 56.20935pt x 56.21584pt.
+ [18
 
 ]
-Overfull \hbox (3.35071pt too wide) in paragraph at lines 293--293
- [][][]$[]$[] 
- []
-
-
-Overfull \hbox (31.55994pt too wide) has occurred while \output is active
-[]
- []
-
-[19
-
-]
-Overfull \hbox (3.35071pt too wide) in paragraph at lines 316--316
- [][][]$[]$[] 
- []
-
-
-Overfull \hbox (31.55994pt too wide) has occurred while \output is active
-[]
- []
-
-[20
-
-]
-Overfull \hbox (12.08397pt too wide) has occurred while \output is active
-[]
- []
-
-[21
-
-]
-Overfull \hbox (12.08397pt too wide) has occurred while \output is active
-[]
- []
-
-[22
-
-]
-Overfull \hbox (3.0254pt too wide) in paragraph at lines 363--363
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (2.81079pt too wide) in paragraph at lines 363--363
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (3.0254pt too wide) in paragraph at lines 363--363
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (14.53195pt too wide) has occurred while \output is active
-[]
- []
-
-[23
-
-]
-Overfull \hbox (3.0254pt too wide) in paragraph at lines 370--370
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (2.81079pt too wide) in paragraph at lines 370--370
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (3.0254pt too wide) in paragraph at lines 370--370
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (14.53195pt too wide) has occurred while \output is active
-[]
- []
-
-[24
-
-]
-Overfull \hbox (3.0254pt too wide) in paragraph at lines 377--377
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (2.81079pt too wide) in paragraph at lines 377--377
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (3.0254pt too wide) in paragraph at lines 377--377
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (3.0254pt too wide) in paragraph at lines 377--377
- [][][]$\TU/latinmodern-math.otf(1)/m/n/10.95 𝑥[]$[] 
- []
-
-
-Overfull \hbox (14.53195pt too wide) has occurred while \output is active
-[]
- []
-
-[25
+File: Mnist3-a.png Graphic file (type png)
+<use Mnist3-a.png>
+Package luatex.def Info: Mnist3-a.png  used on input line 294.
+(luatex.def)             Requested size: 56.20935pt x 56.21584pt.
+LaTeX Font Info:    Font shape `T1/Montserrat-TLF/light/n' will be
+(Font)              scaled to size 24.88pt on input line 294.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 24.88266pt on input line 294.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 20.74222pt on input line 294.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 17.28183pt on input line 294.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 24.87733pt on input line 294.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 20.73778pt on input line 294.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 17.27815pt on input line 294.
+ [19
 
 ]
 \tf@nav=\write7
@@ -2821,55 +2723,61 @@ Overfull \hbox (14.53195pt too wide) has occurred while \output is active
 
 
 Package biblatex Warning: Option 'resetnumbers' requires 'defernumbers=true'.
-(biblatex)                Ignoring 'resetnumbers=true' on input line 380.
+(biblatex)                Ignoring 'resetnumbers=true' on input line 405.
 
 
-LaTeX Warning: Empty bibliography on input line 380.
+LaTeX Warning: Empty bibliography on input line 405.
 
 LaTeX Font Info:    Font shape `T1/Montserrat-TLF/medium/n' will be
-(Font)              scaled to size 10.95pt on input line 380.
+(Font)              scaled to size 10.95pt on input line 405.
 LaTeX Font Info:    Font shape `T1/Montserrat-TLF/medium/n' will be
-(Font)              scaled to size 10.0pt on input line 380.
+(Font)              scaled to size 10.0pt on input line 405.
 LaTeX Font Info:    Font shape `T1/Montserrat-TLF/bold/n' will be
-(Font)              scaled to size 10.0pt on input line 380.
+(Font)              scaled to size 10.0pt on input line 405.
 LaTeX Font Info:    Font shape `T1/Montserrat-TLF/medium/n' will be
-(Font)              scaled to size 9.0pt on input line 380.
+(Font)              scaled to size 9.0pt on input line 405.
 
-Underfull \hbox (badness 4647) in paragraph at lines 380--380
+Underfull \hbox (badness 4647) in paragraph at lines 405--405
 \T1/Montserrat-TLF/medium/n/9 Ho-cken-heim, 28. No-vem-ber
  []
 
 
-Overfull \hbox (10.95pt too wide) in paragraph at lines 380--380
+Overfull \hbox (10.95pt too wide) in paragraph at lines 405--405
 []| $[]$ 
  []
 
-[26
+[20
 
 
 ] (./example.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `example.out' has not changed.
-(rerunfilecheck)             Checksum: 8365D5EBF3EC05FAFB3FCB648559E7DA;418.
+
+Package rerunfilecheck Warning: File `example.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `example.out':
+(rerunfilecheck)             Before: A647EBC12EFF261C27CFB10921710024;247
+(rerunfilecheck)             After:  E6489C37CCAF51ADE8469C4A73BC55AE;330.
 Package logreq Info: Writing requests to 'example.run.xml'.
 
 \openout1 = example.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 61880 strings out of 478290
- 305599,2848258 words of node,token memory allocated
- 6526 words of node memory still in use:
-   36 hlist, 10 vlist, 7 rule, 6 disc, 5 local_par, 4 math, 69 glue, 479 kern, 2
-3 penalty, 2 margin_kern, 45 glyph, 638 attribute, 83 glue_spec, 350 attribute_l
+ 61895 strings out of 478290
+ 305617,2848258 words of node,token memory allocated
+ 4767 words of node memory still in use:
+   36 hlist, 10 vlist, 7 rule, 6 disc, 5 local_par, 4 math, 69 glue, 234 kern, 2
+3 penalty, 2 margin_kern, 45 glyph, 460 attribute, 83 glue_spec, 261 attribute_l
 ist, 3 write, 36 pdf_literal, 1 pdf_start_link, 1 pdf_end_link, 1 pdf_dest, 1 pd
 f_action, 14 pdf_colorstack nodes
-   avail lists: 1:10,2:50260,3:18195,4:1221,5:89,6:207,7:7859,8:48,9:2466,10:5,1
-1:105
- 79666 multiletter control sequences out of 65536+600000
- 112 fonts using 26915259 bytes
+   avail lists: 1:7,2:50479,3:18165,4:1371,5:133,6:229,7:7988,8:48,9:2754,10:3,1
+1:62
+ 79685 multiletter control sequences out of 65536+600000
+ 132 fonts using 34558735 bytes
  128i,21n,115p,1003b,2780s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/nix/store/fgrmr0znpgyplwqk5p1aq11f9yib7d6c-texlive-combined-full-2022-final-te
 xmfdist/fonts/enc/dvips/montserrat/zmo_bapnwu.enc}</nix/store/amxp38imf53q4ww0rj
@@ -2891,10 +2799,10 @@ public/ccicons/ccicons.pfb></nix/store/fgrmr0znpgyplwqk5p1aq11f9yib7d6c-texlive-
 combined-full-2022-final-texmfdist/fonts/type1/public/lm/lmtt8.pfb></nix/store/f
 grmr0znpgyplwqk5p1aq11f9yib7d6c-texlive-combined-full-2022-final-texmfdist/fonts
 /type1/public/amsfonts/symbols/msam7.pfb>
-Output written on example.pdf (26 pages, 367517 bytes).
+Output written on example.pdf (20 pages, 367890 bytes).
 
-PDF statistics: 414 PDF objects out of 1000 (max. 8388607)
- 348 compressed objects within 4 object streams
- 63 named destinations out of 1000 (max. 131072)
- 48 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 294 PDF objects out of 1000 (max. 8388607)
+ 237 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 131072)
+ 32 words of extra memory for PDF output out of 10000 (max. 100000000)
 
