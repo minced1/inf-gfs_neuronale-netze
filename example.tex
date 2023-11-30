@@ -222,7 +222,7 @@ Gewichte
 \begin{columns}[c]
 \begin{column}{0.7\linewidth}
 \begin{block}{Aktivierungsfunktion}
-\only<1-2>{\[a_{0}^{(1)}=\sigma(w_{0}^{(0)}a_{0} + w_{1}^{(0)}a_{1} + \cdots + w_{n}^{(0)}a_{n} -b)\]}
+\only<1-2>{\[a_{0}^{(1)}=\sigma(w_{0,0}a_{0}^{(0)} + w_{0,1}a_{1}^{(0)} + \cdots + w_{0,n}a_{n}^{(0)} -b_{0})\]}
 \only<3>{\[\vec{a^{(1)}}=\sigma(W\vec{a^{(0)}}+\vec{b})\]}
 \onslide<2->{
 \[
@@ -297,12 +297,49 @@ Dataset $D$
 }
 }
 \only<3>{
-\[\frac{1}{n_{D}}\sum_{x \in D} C(x)\]
+\begin{block}{Fehlerfunktion}
+\centering
+$m:$ Anzahl der Einträge in $D$\\
+$d:$ Eintrag (Pixelvektor) in $D$
+
+\[ C_{D}(\vec{W})=\frac{1}{m}\sum_{d \in D}(\sum_{i=0}^{9}(a_{i}^{(3,d)}-s_{i}^{(d)})^2)\]
+\end{block}
+
+
 }
 \end{column}
 \end{columns}
 \end{layout-imageonly}
 \end{frame}
+
+\begin{frame}{Fehler minimieren}
+\begin{layout-imageonly}
+\begin{columns}[c]
+\begin{column}{0.3\linewidth}
+\centering
+\end{column}\hfill
+\begin{column}{0.7\linewidth}
+\centering
+\resizebox{0.8\linewidth}{!}{
+\begin{tikzpicture}
+\begin{axis}
+[
+    xlabel={$w$},
+    ylabel={$C(w)$},
+    domain=-5:5,
+    restrict y to domain=0:10,
+    axis lines=center,
+]
+\addplot[color=btdl@color@alerted, style = {thick},samples=100, smooth] {x^4-3*x^3+2*x+5};
+\end{axis}
+\end{tikzpicture}
+}
+\end{column}
+\end{columns}
+\end{layout-imageonly}
+\end{frame}
+
+
 
 % \begin{frame}{Aufbau eines Perzeptrons}
 %     \begin{layout-imageonly}
