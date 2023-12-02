@@ -88,8 +88,7 @@
 \colorlet{hl-shade}{btdl@color@secondary}
 
 \usepackage{pgfplots}
-\pgfplotsset{width=\linewidth}
-
+\pgfplotsset{compat=1.18}
 \begin{document}
 \section{Modellierung}
 \begin{frame}{Modellierung des Problems}
@@ -230,7 +229,7 @@ Gewichte
     a_{0}^{(1)}\\
     a_{1}^{(1)}\\
     \vdots \\
-    a_{n}^{(1)}
+    a_{k}^{(1)}
 \end{bmatrix}=
 \sigma
     \begin{pmatrix}
@@ -297,7 +296,7 @@ Dataset $D$
 }
 }
 \only<3>{
-\begin{block}{Fehlerfunktion}
+\begin{block}{Fehlerfunktion: Mean Squared Error}
 \centering
 $m:$ Anzahl der Einträge in $D$\\
 $d:$ Eintrag (Pixelvektor) in $D$
@@ -315,25 +314,143 @@ $d:$ Eintrag (Pixelvektor) in $D$
 \begin{frame}{Fehler minimieren}
 \begin{layout-imageonly}
 \begin{columns}[c]
-\begin{column}{0.3\linewidth}
+\begin{column}{0.5\linewidth}
 \centering
+\only<1>{
+Globales Minimum durch Ableiten
+}
+\only<2>{
+Zwei lokale Minima; globales Minimum durch Vergleich
+}
+\only<3>{
+Finden lokaler Minima durch Ableiten nicht möglich
+}
+\only<4>{
+\begin{block}{Gradient Descent}
+\centering
+$\nabla C(\vec{W}):$ Gradient der Fehlerfunktion $C$ an Stelle $\vec{W}$\\
+{\footnotesize\textit{Vektor in Richtung des größten Anstiegs}}\\
+\[\vec{W_{neu}}=\vec{W}-\nabla C(\vec{W})\]
+\end{block}
+
+}
 \end{column}\hfill
-\begin{column}{0.7\linewidth}
+\begin{column}{0.5\linewidth}
 \centering
 \resizebox{0.8\linewidth}{!}{
+\only<1>{
 \begin{tikzpicture}
 \begin{axis}
 [
     xlabel={$w$},
+    xmin=-1,
+    xmax=3,
+    xtick={},
+    xticklabels={,,},
     ylabel={$C(w)$},
-    domain=-5:5,
+    ymin=0,
+    ymax=10,
+    ytick={},
+    yticklabels={,,},
+    domain=-1:3,
     restrict y to domain=0:10,
     axis lines=center,
 ]
-\addplot[color=btdl@color@alerted, style = {thick},samples=100, smooth] {x^4-3*x^3+2*x+5};
+\addplot[draw=none, mark=*, samples at = {1}] {2*(x-1)^2+1};
+\addplot[color=btdl@color@alerted, style = {thick}, samples=100, smooth] {2*(x-1)^2+1};
 \end{axis}
 \end{tikzpicture}
 }
+\only<2>{
+\begin{tikzpicture}
+\begin{axis}
+[
+    xlabel={$w$},
+    xmin=-1,
+    xmax=3,
+    xtick={},
+    xticklabels={,,},
+    ylabel={$C(w)$},
+    ymin=0,
+    ymax=10,
+    ytick={},
+    yticklabels={,,},
+    domain=-1:3,
+    restrict y to domain=0:10,
+    axis lines=center,
+]
+\addplot[draw=none, mark=*, samples at = {-0.432,2.141}] {x^4-3*x^3+2*x+5};
+\addplot[color=btdl@color@alerted, style = {thick}, samples=100, smooth] {x^4-3*x^3+2*x+5};
+\end{axis}
+\end{tikzpicture}
+}
+\only<3>{
+\begin{tikzpicture}
+\begin{axis}
+[
+    view={45}{45},
+    xlabel={$w_0$},
+    restrict x to domain=-5:5,
+    xmin=-5,
+    xmax=5,
+    xtick={-5,0,5},
+    xticklabels={,,},
+    ylabel={$w_1$},
+    restrict y to domain=-5:5,
+    ymin=-5,
+    ymax=5,
+    ytick={-5,0,5},
+    yticklabels={,,},
+    zlabel={$C(w_{0},w_{1})$},
+    %z post scale = 2,
+    restrict z to domain=-5:10,
+    zmin=0,
+    zmax=5,
+    ytick={0,5},
+    zticklabels={,,},
+%     axis lines=center,
+]
+\addplot3[surf,samples=50] {-0.5*sin(deg(y))+0.002*x^4+0.002*y^4-0.2*x+1};
+\end{axis}
+\end{tikzpicture}
+}
+}
+\only<4>{
+\resizebox{0.8\linewidth}{!}{
+\begin{tikzpicture}
+\begin{axis}
+[
+    view={0}{90},
+    xlabel={$w_0$},
+    restrict x to domain=-5:5,
+    xmin=-5,
+    xmax=5,
+    xtick={-5,0,5},
+    xticklabels={,,},
+    ylabel={$w_1$},
+    restrict y to domain=-5:5;
+    ymin=-5,
+    ymax=5,
+    ytick={-5,0,5},
+    yticklabels={,,},
+    zlabel={$C(w_{0},w_{1})$},
+    %z post scale = 2,
+    restrict z to domain=-5:10,
+    zmin=0,
+    zmax=5,
+    ytick={0,5},
+    zticklabels={,,},
+%     axis lines=center,
+]
+\addplot3[surf,samples=50] {-0.5*sin(deg(y))+0.002*x^4+0.002*y^4-0.2*x+1};
+\addplot3[|->, draw=darkgray] coordinates {(0,0,1)  (-0.2,-0.5,1)} node[text=black,midway,left] {$\nabla C$};
+\addplot3[|->, draw=lgray] coordinates {(0,0,1)  (0.2,0.5,0.72)} node[text=white,midway,right] {$-\nabla C$};
+\addplot3[mark=x,draw=lgray] coordinates {(0.2,0.5,0.72)  (0.6,1.23,0.52)  (0.8,1.4,0.41)  (1,1.45,0.36)  (1.2,1.49,0.32)  (1.4,1.5,0.28)  (1.55,1.51,0.24)  (1.7,1.513,0.21)  (1.9,1.514,0.18)  (2,1.515,0.16)  (2.2,1.515,0.14)  (2.3,1.515,0.12) (2.4,1.515,0.11) (2.5,1.515,0.1)  (2.56,1.515,0.09)};
+\end{axis}
+\end{tikzpicture}
+}
+}
+
 \end{column}
 \end{columns}
 \end{layout-imageonly}
