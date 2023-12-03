@@ -56,7 +56,7 @@
 \end{tikzpicture}
 }
 
-\def\neuralnetwork{
+\def\neuralnetworkRandom{
 \begin{tikzpicture}[bc/.default={lgray}]
 
 \foreach \i in {0,...,2}{
@@ -84,6 +84,192 @@
     \node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (i\i) at (4,-0.5*\i-0.25) {};
     \foreach \j in {0,...,15}
         \draw[ultra thin] (i\i) -- (h\j);
+}
+\foreach \i in {0,...,7}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black] (x\i) at (0,-0.5*\i) {};
+        \foreach \j in {0,...,15}
+        \draw[ultra thin] (x\i) -- (i\j);
+}
+\node[ fill = none, draw=none] (x8) at (0,-0.5*8) {$\vdots$};
+\foreach \i in {9,...,16}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black] (x\i) at (0,-0.5*\i) {};
+    \foreach \j in {0,...,15}
+        \draw[ultra thin] (x\i) -- (i\j);
+}
+\draw[decoration={brace,raise=20pt},decorate] (x16) -- node[left=20pt] {784} (x0);
+\end{tikzpicture}
+}
+
+\def\neuralnetwork{
+\begin{tikzpicture}[bc/.default={lgray}]
+
+\foreach \i in {0,...,2}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black,] (y\i) at (13,-0.5*\i-1.75) {};
+}
+\node[bc, text width = 0.1, fill = black, draw=btdl@color@black,] (y3) at (13,-0.5*3-1.75) {};
+\foreach \i in {4,...,9}{
+    \node[bc, text width = 0.1, fill = none, draw=btdl@color@black,] (y\i) at (13,-0.5*\i-1.75) {};
+}
+
+\definecolor{rndgray}{gray}{0.9}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:0}] (o0) at (12,-0.5*0-1.75) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:1}] (o1) at (12,-0.5*1-1.75) {};
+\definecolor{rndgray}{gray}{0.5}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:2}] (o2) at (12,-0.5*2-1.75) {};
+\definecolor{rndgray}{gray}{0.6}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:3}] (o3) at (12,-0.5*3-1.75) {};
+\definecolor{rndgray}{gray}{0.3}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:4}] (o4) at (12,-0.5*4-1.75) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:5}] (o5) at (12,-0.5*5-1.75) {};
+\definecolor{rndgray}{gray}{0.8}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:6}] (o6) at (12,-0.5*6-1.75) {};
+\definecolor{rndgray}{gray}{0.3}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:7}] (o7) at (12,-0.5*7-1.75) {};
+\definecolor{rndgray}{gray}{0.3}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:8}] (o8) at (12,-0.5*8-1.75) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {right:9}] (o9) at (12,-0.5*9-1.75) {};
+
+\only<1-2>{
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h0) at (8,-0.5*0-0.25) {};
+\definecolor{rndgray}{gray}{0.2}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h1) at (8,-0.5*1-0.25) {};
+\definecolor{rndgray}{gray}{0.5}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h2) at (8,-0.5*2-0.25) {};
+\definecolor{rndgray}{gray}{0.2}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h3) at (8,-0.5*3-0.25) {};
+\definecolor{rndgray}{gray}{1}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h4) at (8,-0.5*4-0.25) {};
+\definecolor{rndgray}{gray}{0.8}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h5) at (8,-0.5*5-0.25) {};
+\definecolor{rndgray}{gray}{1}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h6) at (8,-0.5*6-0.25) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h7) at (8,-0.5*7-0.25) {};
+\definecolor{rndgray}{gray}{0.6}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h8) at (8,-0.5*8-0.25) {};
+\definecolor{rndgray}{gray}{0.7}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h9) at (8,-0.5*9-0.25) {};
+\definecolor{rndgray}{gray}{0.4}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h10) at (8,-0.5*10-0.25) {};
+\definecolor{rndgray}{gray}{0.5}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h11) at (8,-0.5*11-0.25) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h12) at (8,-0.5*12-0.25) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h13) at (8,-0.5*13-0.25) {};
+\definecolor{rndgray}{gray}{0.3}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h14) at (8,-0.5*14-0.25) {};
+\definecolor{rndgray}{gray}{1}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (h15) at (8,-0.5*15-0.25) {};
+}
+\only<3>{
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!100!white}{$\downarrow$}}] (h0) at (8,-0.5*0-0.25) {};
+\definecolor{rndgray}{gray}{0.2}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!80!white}{$\uparrow$}}] (h1) at (8,-0.5*1-0.25) {};
+\definecolor{rndgray}{gray}{0.5}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!50!white}{$\uparrow$}}] (h2) at (8,-0.5*2-0.25) {};
+\definecolor{rndgray}{gray}{0.2}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!80!white}{$\downarrow$}}] (h3) at (8,-0.5*3-0.25) {};
+\definecolor{rndgray}{gray}{1}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!30!white}{$\downarrow$}}] (h4) at (8,-0.5*4-0.25) {};
+\definecolor{rndgray}{gray}{0.8}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!20!white}{$\uparrow$}}] (h5) at (8,-0.5*5-0.25) {};
+\definecolor{rndgray}{gray}{1}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!20!white}{$\downarrow$}}] (h6) at (8,-0.5*6-0.25) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!100!white}{$\uparrow$}}] (h7) at (8,-0.5*7-0.25) {};
+\definecolor{rndgray}{gray}{0.6}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!40!white}{$\uparrow$}}] (h8) at (8,-0.5*8-0.25) {};
+\definecolor{rndgray}{gray}{0.7}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!30!white}{$\uparrow$}}] (h9) at (8,-0.5*9-0.25) {};
+\definecolor{rndgray}{gray}{0.4}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!60!white}{$\downarrow$}}] (h10) at (8,-0.5*10-0.25) {};
+\definecolor{rndgray}{gray}{0.5}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!50!white}{$\downarrow$}}] (h11) at (8,-0.5*11-0.25) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!100!white}{$\uparrow$}}] (h12) at (8,-0.5*12-0.25) {};
+\definecolor{rndgray}{gray}{0}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!100!white}{$\downarrow$}}] (h13) at (8,-0.5*13-0.25) {};
+\definecolor{rndgray}{gray}{0.3}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@red!70!white}{$\downarrow$}}] (h14) at (8,-0.5*14-0.25) {};
+\definecolor{rndgray}{gray}{1}
+\node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black, label = {left:\textcolor{btdl@color@alerted!20!white}{$\uparrow$}}] (h15) at (8,-0.5*15-0.25) {};
+}
+
+\only<1>{
+\foreach \i in {0,...,15}{
+        \foreach \j in {0,1,2,3,4,5,6,7,8,9}
+        \draw[ultra thin, draw=lgray] (h\i) -- (o\j);
+}
+}
+\only<2>{
+\foreach \i in {0,...,15}{
+        \foreach \j in {0,1,2,4,5,6,7,8,9}
+        \draw[ultra thin, draw=lgray] (h\i) -- (o\j);
+}
+
+\draw[thick, draw=btdl@color@alerted!100!white] (h0) -- (o3);
+\draw[thick, draw=btdl@color@alerted!80!white] (h1) -- (o3);
+\draw[thick, draw=btdl@color@alerted!50!white] (h2) -- (o3);
+\draw[thick, draw=btdl@color@alerted!80!white] (h3) -- (o3);
+\draw[thick, draw=btdl@color@alerted!0!white] (h4) -- (o3);
+\draw[thick, draw=btdl@color@alerted!20!white] (h5) -- (o3);
+\draw[thick, draw=btdl@color@alerted!0!white] (h6) -- (o3);
+\draw[thick, draw=btdl@color@alerted!100!white] (h7) -- (o3);
+\draw[thick, draw=btdl@color@alerted!40!white] (h8) -- (o3);
+\draw[thick, draw=btdl@color@alerted!30!white] (h9) -- (o3);
+\draw[thick, draw=btdl@color@alerted!60!white] (h10) -- (o3);
+\draw[thick, draw=btdl@color@alerted!50!white] (h11) -- (o3);
+\draw[thick, draw=btdl@color@alerted!100!white] (h12) -- (o3);
+\draw[thick, draw=btdl@color@alerted!100!white] (h13) -- (o3);
+\draw[thick, draw=btdl@color@alerted!70!white] (h14) -- (o3);
+\draw[thick, draw=btdl@color@alerted!0!white] (h15) -- (o3);
+}
+
+\only<3->{
+\foreach \i in {0,...,15}{
+        \foreach \j in {0,1,2,4,5,6,7,8,9}
+        \draw[ultra thin, draw=lgray] (h\i) -- (o\j);
+}
+
+\draw[thick, draw=btdl@color@red!100!white] (h0) -- (o3);
+\draw[thick, draw=btdl@color@alerted!80!white] (h1) -- (o3);
+\draw[thick, draw=btdl@color@alerted!50!white] (h2) -- (o3);
+\draw[thick, draw=btdl@color@red!80!white] (h3) -- (o3);
+\draw[thick, draw=btdl@color@red!30!white] (h4) -- (o3);
+\draw[thick, draw=btdl@color@alerted!20!white] (h5) -- (o3);
+\draw[thick, draw=btdl@color@red!20!white] (h6) -- (o3);
+\draw[thick, draw=btdl@color@alerted!100!white] (h7) -- (o3);
+\draw[thick, draw=btdl@color@alerted!40!white] (h8) -- (o3);
+\draw[thick, draw=btdl@color@alerted!30!white] (h9) -- (o3);
+\draw[thick, draw=btdl@color@red!60!white] (h10) -- (o3);
+\draw[thick, draw=btdl@color@red!50!white] (h11) -- (o3);
+\draw[thick, draw=btdl@color@alerted!100!white] (h12) -- (o3);
+\draw[thick, draw=btdl@color@red!100!white] (h13) -- (o3);
+\draw[thick, draw=btdl@color@red!70!white] (h14) -- (o3);
+\draw[thick, draw=btdl@color@alerted!20!white] (h15) -- (o3);
+}
+
+
+
+
+\foreach \i in {0,...,15}{
+    \pgfmathparse{rnd}
+    \definecolor{rndgray}{gray}{\pgfmathresult}
+    \node[bc, text width = 0.1, fill = rndgray, draw=btdl@color@black] (i\i) at (4,-0.5*\i-0.25) {};
+    \only<1-2>{
+    \foreach \j in {0,...,15}
+        \draw[ultra thin] (i\i) -- (h\j);
+    }
+    \only<3->{
+    \foreach \j in {0,...,15}
+        \draw[ultra thin, draw=lgray] (i\i) -- (h\j);
+    }
 }
 \foreach \i in {0,...,7}{
     \node[bc, text width = 0.1, fill = none, draw=btdl@color@black] (x\i) at (0,-0.5*\i) {};

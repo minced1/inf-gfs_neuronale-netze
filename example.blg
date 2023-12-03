@@ -1,9 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'example.blg'
-[83] biber:340> INFO - === Sa Dez  2, 2023, 22:15:18
-[100] Biber.pm:419> INFO - Reading 'example.bcf'
-[177] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
-[191] bbl.pm:660> INFO - Writing 'example.bbl' with encoding 'UTF-8'
-[192] bbl.pm:763> INFO - Output to example.bbl
-[192] Biber.pm:131> WARN - The file 'example.bcf' does not contain any citations!
-[192] Biber.pm:133> INFO - WARNINGS: 1
+[75] biber:340> INFO - === So Dez  3, 2023, 18:36:12
+[90] Biber.pm:419> INFO - Reading 'example.bcf'
+[161] Biber.pm:976> INFO - Using all citekeys in bib section 0
+[175] Biber.pm:4419> INFO - Processing section 0
+[188] Biber.pm:4610> INFO - Looking for bibtex file 'example.bib' for section 0
+[188] bibtex.pm:1713> INFO - LaTeX decoding ...
+[191] bibtex.pm:1519> INFO - Found BibTeX data source 'example.bib'
+[240] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[240] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[240] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'de-DE'
+[240] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
+[248] bbl.pm:660> INFO - Writing 'example.bbl' with encoding 'UTF-8'
+[249] bbl.pm:763> INFO - Output to example.bbl

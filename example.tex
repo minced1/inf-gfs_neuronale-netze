@@ -89,6 +89,12 @@
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+
+\usepackage[link]{qrcode}
+\outroright{\smash{\raisebox{1.33cm/2}{\qrcode[height=1.33cm]{https://www.3blue1brown.com/topics/neural-networks}}}\begin{tikzpicture}[remember picture,overlay]
+    \node[above left,btdl@color@white,scale=.475] at (current page.south east) {\href{https://www.3blue1brown.com/topics/neural-networks}{Trainiertes Netzwerk zum Testen}};
+\end{tikzpicture}}
+
 \begin{document}
 \section{Modellierung}
 \begin{frame}{Modellierung des Problems}
@@ -165,7 +171,7 @@ Inputs
 Gewichte
 }
 \begin{block}{Linearkombination}
-    \[w_{0}x_{0} + w_{1}x_{1} + \cdots + w_{n}x_{n}\onslide<4->{-b}\]
+    \[w_{0}a_{0} + w_{1}a_{1} + \cdots + w_{n}a_{n}\onslide<4->{-b}\]
 \end{block}
 \end{column}
 \begin{column}{0.5\linewidth}
@@ -287,7 +293,7 @@ Dataset $D$
 \centering
 \only<1>{
 \resizebox{!}{0.5\textheight}{
-\neuralnetwork
+\neuralnetworkRandom
 }
 }
 \only<2>{
@@ -325,12 +331,14 @@ Zwei lokale Minima; globales Minimum durch Vergleich
 \only<3>{
 Finden lokaler Minima durch Ableiten nicht möglich
 }
-\only<4>{
+\only<4->{
 \begin{block}{Gradient Descent}
 \centering
 $\nabla C(\vec{W}):$ Gradient der Fehlerfunktion $C$ an Stelle $\vec{W}$\\
 {\footnotesize\textit{Vektor in Richtung des größten Anstiegs}}\\
-\[\vec{W_{neu}}=\vec{W}-\nabla C(\vec{W})\]
+$\eta:$ Lernrate\\
+{\footnotesize\textit{Springende Werte verhindern}}
+\[\vec{W_{neu}}=\vec{W}-\eta\nabla C(\vec{W})\]
 \end{block}
 
 }
@@ -445,6 +453,40 @@ $\nabla C(\vec{W}):$ Gradient der Fehlerfunktion $C$ an Stelle $\vec{W}$\\
 \addplot3[surf,samples=50] {-0.5*sin(deg(y))+0.002*x^4+0.002*y^4-0.2*x+1};
 \addplot3[|->, draw=darkgray] coordinates {(0,0,1)  (-0.2,-0.5,1)} node[text=black,midway,left] {$\nabla C$};
 \addplot3[|->, draw=lgray] coordinates {(0,0,1)  (0.2,0.5,0.72)} node[text=white,midway,right] {$-\nabla C$};
+\end{axis}
+\end{tikzpicture}
+}
+}
+\only<5>{
+\resizebox{0.8\linewidth}{!}{
+\begin{tikzpicture}
+\begin{axis}
+[
+    view={0}{90},
+    xlabel={$w_0$},
+    restrict x to domain=-5:5,
+    xmin=-5,
+    xmax=5,
+    xtick={-5,0,5},
+    xticklabels={,,},
+    ylabel={$w_1$},
+    restrict y to domain=-5:5;
+    ymin=-5,
+    ymax=5,
+    ytick={-5,0,5},
+    yticklabels={,,},
+    zlabel={$C(w_{0},w_{1})$},
+    %z post scale = 2,
+    restrict z to domain=-5:10,
+    zmin=0,
+    zmax=5,
+    ytick={0,5},
+    zticklabels={,,},
+%     axis lines=center,
+]
+\addplot3[surf,samples=50] {-0.5*sin(deg(y))+0.002*x^4+0.002*y^4-0.2*x+1};
+\addplot3[|->, draw=darkgray] coordinates {(0,0,1)  (-0.2,-0.5,1)} node[text=black,midway,left] {$\nabla C$};
+\addplot3[|->, draw=lgray] coordinates {(0,0,1)  (0.2,0.5,0.72)} node[text=white,midway,right] {$-\nabla C$};
 \addplot3[mark=x,draw=lgray] coordinates {(0.2,0.5,0.72)  (0.6,1.23,0.52)  (0.8,1.4,0.41)  (1,1.45,0.36)  (1.2,1.49,0.32)  (1.4,1.5,0.28)  (1.55,1.51,0.24)  (1.7,1.513,0.21)  (1.9,1.514,0.18)  (2,1.515,0.16)  (2.2,1.515,0.14)  (2.3,1.515,0.12) (2.4,1.515,0.11) (2.5,1.515,0.1)  (2.56,1.515,0.09)};
 \end{axis}
 \end{tikzpicture}
@@ -456,6 +498,36 @@ $\nabla C(\vec{W}):$ Gradient der Fehlerfunktion $C$ an Stelle $\vec{W}$\\
 \end{layout-imageonly}
 \end{frame}
 
+\begin{frame}{Gradienten bestimmen}
+\begin{layout-imageonly}
+\begin{columns}[c]
+\begin{column}{0.4\linewidth}
+\centering
+\begin{block}{Backpropagation}
+\onslide<1->{
+Bias verändern\\
+}
+\onslide<2->{
+Gewichte verändern\\
+{\scriptsize\textit{Proportional zu Neuronen aus vorheriger Schicht}}\\
+}
+\onslide<3->{
+Neuronen verändern\\
+{\scriptsize\textit{Gewichte aus vorheriger Schicht verändern}}
+}
+\end{block}
+\end{column}\hfill
+\begin{column}{0.6\linewidth}
+\centering
+\resizebox{!}{0.5\textheight}{
+\neuralnetwork
+}
+\end{column}
+\end{columns}
+\end{layout-imageonly}
+\end{frame}
+
+\nocite{*}
 
 
 % \begin{frame}{Aufbau eines Perzeptrons}

@@ -16,5 +16,109 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{Moessner2017}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=eb4d43d58c3da52caea051bcf36b804f}{%
+           family={Mössner},
+           familyi={M\bibinitperiod},
+           given={Cedric},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb4d43d58c3da52caea051bcf36b804f}
+      \strng{fullhash}{eb4d43d58c3da52caea051bcf36b804f}
+      \strng{bibnamehash}{eb4d43d58c3da52caea051bcf36b804f}
+      \strng{authorbibnamehash}{eb4d43d58c3da52caea051bcf36b804f}
+      \strng{authornamehash}{eb4d43d58c3da52caea051bcf36b804f}
+      \strng{authorfullhash}{eb4d43d58c3da52caea051bcf36b804f}
+      \field{labelalpha}{Mös17}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{1-9.2}
+      \field{title}{Neuronale Netze}
+      \field{year}{2017}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=8gYmuU_PNto&list=PLNmsVeXQZj7p-BX9gVfz24TFGyy44wM_a
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=8gYmuU_PNto&list=PLNmsVeXQZj7p-BX9gVfz24TFGyy44wM_a
+      \endverb
+    \endentry
+    \entry{Sanderson2017}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5dd1de74b15229ad68590a5ce3ade3c5}{%
+           family={Sanderson},
+           familyi={S\bibinitperiod},
+           given={Grant},
+           giveni={G\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=31ad4cc5001dacd7a3e3c6288dcf10d4}{%
+           family={Pullen},
+           familyi={P\bibinitperiod},
+           given={Josh},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{fullhash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{bibnamehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{authorbibnamehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{authornamehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{authorfullhash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{editorbibnamehash}{31ad4cc5001dacd7a3e3c6288dcf10d4}
+      \strng{editornamehash}{31ad4cc5001dacd7a3e3c6288dcf10d4}
+      \strng{editorfullhash}{31ad4cc5001dacd7a3e3c6288dcf10d4}
+      \field{labelalpha}{San17}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{1-4}
+      \field{subtitle}{The basics of neural networks, and the math behind how they learn}
+      \field{title}{Neural Networks}
+      \field{year}{2017}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.3blue1brown.com/topics/neural-networks
+      \endverb
+      \verb{url}
+      \verb https://www.3blue1brown.com/topics/neural-networks
+      \endverb
+    \endentry
+    \entry{NeuroWiki2023}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{labelalpha}{Wik23}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; aufgerufen 20. November 2023]}
+      \field{title}{Künstliches neuronales Netz}
+      \field{year}{2023}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://de.wikipedia.org/w/index.php?title=K\%C3\%BCnstliches\%20neuronales\%20Netz&oldid=238667282
+      \endverb
+      \verb{url}
+      \verb https://de.wikipedia.org/w/index.php?title=K%5C%C3%5C%BCnstliches%5C%20neuronales%5C%20Netz&oldid=238667282
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 
